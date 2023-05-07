@@ -3,7 +3,7 @@ name: Android CI Job
 on:
   push:
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main", "master-dev/**" ]
 
 jobs:
 
