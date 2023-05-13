@@ -36,44 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
         setSupportActionBar(binding.toolbar);
 
-        fadeInFromBottom = AnimationUtils.loadAnimation(this, R.anim.from_bottom_anim);
-        fadeOutToBottom = AnimationUtils.loadAnimation(this, R.anim.to_bottom_anim);
-
-        addEventFab = findViewById(R.id.main_fab);
-        addType1EventFab = findViewById(R.id.sub_fab_2);
-        addType2EventFab = findViewById(R.id.sub_fab_1);
-
-        addEventFab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Log.d("FAB", "Before!!!!!!!!!");
-                Log.d("FAB", "isExpanded - " + isExpanded);
-                Log.d("FAB", "Visibility of Type1 FAB - " + addType1EventFab.getVisibility());
-                Log.d("FAB", "Visibility of Type2 FAB - " + addType2EventFab.getVisibility());
-                setVisibility(isExpanded);
-                setAnimation(isExpanded);
-                isExpanded = !isExpanded;
-                Log.d("FAB", "After!!!!!!!!!");
-                Log.d("FAB", "isExpanded - " + isExpanded);
-                Log.d("FAB", "Visibility of Type1 FAB - " + addType1EventFab.getVisibility());
-                Log.d("FAB", "Visibility of Type2 FAB - " + addType2EventFab.getVisibility());
-            }
-        });
-
-        addType1EventFab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Type1 Event", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        addType2EventFab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Type2 Event", Toast.LENGTH_SHORT).show();
-            }
-        });
+        loadFloatingActionButtons(); // Load all floating action buttons and other dependencies
 
     }
 
@@ -105,14 +68,49 @@ public class MainActivity extends AppCompatActivity {
         return super.onSupportNavigateUp();
     }
 
+    private void loadFloatingActionButtons(){
+        fadeInFromBottom = AnimationUtils.loadAnimation(this, R.anim.from_bottom_anim);
+        fadeOutToBottom = AnimationUtils.loadAnimation(this, R.anim.to_bottom_anim);
+
+        addEventFab = findViewById(R.id.main_fab);
+        addType1EventFab = findViewById(R.id.sub_fab_2);
+        addType2EventFab = findViewById(R.id.sub_fab_1);
+
+        addEventFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setVisibility(isExpanded);
+                setAnimation(isExpanded);
+                isExpanded = !isExpanded;
+            }
+        });
+
+        addType1EventFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "Type1 Event", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        addType2EventFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "Type2 Event", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
     private void setVisibility(boolean isChecked){
         if(isChecked){
             addType1EventFab.setVisibility(View.INVISIBLE);
             addType2EventFab.setVisibility(View.INVISIBLE);
+
         }else{
             addType1EventFab.setVisibility(View.VISIBLE);
             addType2EventFab.setVisibility(View.VISIBLE);
         }
+        addType1EventFab.setClickable(!isChecked);
+        addType2EventFab.setClickable(!isChecked);
     }
 
     private void setAnimation(boolean isChecked){
