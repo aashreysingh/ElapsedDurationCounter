@@ -6,28 +6,28 @@
     android:layout_height="wrap_content">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/s1_fab"
+        android:id="@+id/sub_fab_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="@+id/s2_fab"
-        app:layout_constraintStart_toStartOf="@+id/s2_fab"
+        app:layout_constraintEnd_toEndOf="@+id/sub_fab_1"
+        app:layout_constraintStart_toStartOf="@+id/sub_fab_1"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_input_add" />
+        app:srcCompat="@drawable/ic_two_way_arrow" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/s2_fab"
+        android:id="@+id/sub_fab_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone"
         android:layout_marginTop="@dimen/fab_margin"
-        app:layout_constraintEnd_toEndOf="@+id/fab"
-        app:layout_constraintStart_toStartOf="@+id/fab"
-        app:layout_constraintTop_toBottomOf="@+id/s1_fab"
-        app:srcCompat="@android:drawable/ic_input_add" />
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/main_fab"
+        app:layout_constraintStart_toStartOf="@+id/main_fab"
+        app:layout_constraintTop_toBottomOf="@+id/sub_fab_2"
+        app:srcCompat="@drawable/ic_one_way_arrow" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/main_fab"
         style="@style/Base.Widget.Material3.FloatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -36,8 +36,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/s2_fab"
-        app:srcCompat="@android:drawable/ic_input_add" />
+        app:layout_constraintTop_toBottomOf="@+id/sub_fab_1"
+        app:srcCompat="@drawable/ic_baseline_add_task_24" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
