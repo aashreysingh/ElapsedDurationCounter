@@ -1,6 +1,7 @@
 package com.bizarre.durationcounter;
 
 import android.animation.Animator;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -62,12 +63,6 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        return super.onSupportNavigateUp();
-    }
-
     private void loadFloatingActionButtons(){
         fadeInFromBottom = AnimationUtils.loadAnimation(this, R.anim.from_bottom_anim);
         fadeOutToBottom = AnimationUtils.loadAnimation(this, R.anim.to_bottom_anim);
@@ -88,14 +83,18 @@ public class MainActivity extends AppCompatActivity {
         addType1EventFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Type1 Event", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this, AddEventActivity.class);
+                intent.putExtra("eventType", 0);
+                MainActivity.this.startActivity(intent);
             }
         });
 
         addType2EventFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Type2 Event", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this, AddEventActivity.class);
+                intent.putExtra("eventType", 1);
+                MainActivity.this.startActivity(intent);
             }
         });
     }
